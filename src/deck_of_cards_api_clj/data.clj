@@ -6,6 +6,18 @@
             [cheshire.core :refer :all]))
 
 ;;;;;;;;;;;;;;;;
+;; clj-http
+;;;;;;;;;;;;;;;;
+
+
+(defn client-get [api-fxn]
+  (parse-string
+   (:body
+    (client/get
+     api-fxn
+     {:accept :json}))))
+
+;;;;;;;;;;;;;;;;
 ;; deck-of-cards-api
 ;;;;;;;;;;;;;;;;
 
@@ -14,11 +26,8 @@
 (defn shuffle-the-cards-api [deck-count]
   (str "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=" (str deck-count)))
 
-(parse-string
- (:body
-  (client/get
-   (shuffle-the-cards-api 1)
-   {:accept :json})))
+(client-get
+ (shuffle-the-cards-api 1))
 
 ;;;;;;;;;;;;;;;;;
 
@@ -27,6 +36,10 @@
 (defn draw-a-card-api [deck-id card-count]
   (str "https://deckofcardsapi.com/api/deck/" (str deck-id) "/draw/?count=" (str card-count)))
 
+(let [deck-id "drxd0vwf5mc6"]
+  (client-get
+   (draw-a-card-api deck-id 1)))
+
 ;;;;;;;;;;;;;;;;;
 
 ;; Reshuffle the Cards:
@@ -34,18 +47,30 @@
 (defn reshuffle-the-cards-api [deck-id]
   (str "https://deckofcardsapi.com/api/deck/" (str deck-id) "/shuffle/"))
 
+(let [deck-id "drxd0vwf5mc6"]
+  (client-get
+   (reshuffle-the-cards-api deck-id)))
+
 ;;;;;;;;;;;;;;;;;
 
 ;; Brand new deck of cards
 (defn new-deck-of-cards-api []
   (str "https://deckofcardsapi.com/api/deck/new/"))
 
+(client-get
+ (new-deck-of-cards-api ))
+
 ;;;;;;;;;;;;;;;;;
 
 ;; A Partial Deck:
-;; We pass a vector of cards
+;; TODO: We pass a vector of cards as arguments
 (defn partial-deck-api []
   (str "https://deckofcardsapi.com/api/deck/new/shuffle/?cards=AS,2S,KS,AD,2D,KD,AC,2C,KC,AH,2H,KH"))
+
+(client-get
+ (partial-deck-api ))
+
+
 
 ;;;;;;;;;;;;;;;;;
 
