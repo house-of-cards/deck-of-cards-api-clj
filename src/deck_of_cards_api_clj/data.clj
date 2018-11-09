@@ -75,8 +75,18 @@
 ;;;;;;;;;;;;;;;;;
 
 ;;Adding to Piles
-(defn [deck-id pile-name cards]
-  (str "https://deckofcardsapi.com/api/deck/" deck_id "/pile/" pile_name "/add/?cards=AS,2S"))
+;; TODO: pass the card names as arguments
+(defn adding-to-piles-api [deck-id pile-name #_cards]
+  (str "https://deckofcardsapi.com/api/deck/" deck-id "/pile/" pile-name "/add/?cards=AS,2S"))
+
+
+(let [deck-id "drxd0vwf5mc6"]
+(client-get
+ (adding-to-piles-api deck-id "pile1")))
+
+
+
+
 
 ;;;;;;;;;;;;;;;;;
 
@@ -85,12 +95,23 @@
 (defn shuffle-piles-api [deck-id pile-name]
   (str "https://deckofcardsapi.com/api/deck/" deck-id "/pile/" pile-name "/shuffle"))
 
+(let [deck-id "drxd0vwf5mc6"]
+  (client-get
+   (shuffle-piles-api deck-id "pile1")))
+
+
+
 ;;;;;;;;;;;;;;;;;
 
 ;;Listing Cards in Piles
 
 (defn list-cards-in-piles-api [deck-id pile-name]
   (str "https://deckofcardsapi.com/api/deck/" deck-id "/pile/" pile-name "/list"))
+
+(let [deck-id "drxd0vwf5mc6"]
+  (client-get
+   (shuffle-piles-api deck-id "pile1")))
+
 
 ;;;;;;;;;;;;;;;;;
 
