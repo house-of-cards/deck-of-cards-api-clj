@@ -1,0 +1,12 @@
+
+GET http://dummy.restapiexample.com/api/v1/employees
+
+
+
+GET https://api.github.com
+User-Agent: Emacs Restclient
+
+
+
+GET http://jira.atlassian.com/rest/api/latest/issue/JRA-9
+

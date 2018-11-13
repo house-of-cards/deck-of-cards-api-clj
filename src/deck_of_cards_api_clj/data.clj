@@ -21,6 +21,11 @@
 ;; deck-of-cards-api
 ;;;;;;;;;;;;;;;;
 
+;; TODO:
+;; The value, one of A (for an ace), 2, 3, 4, 5, 6, 7, 8, 9, 0 (for a ten), J (jack), Q (queen), or K (king);
+;; The suit, one of S (Spades), D (Diamonds), C (Clubs), or H (Hearts).
+
+
 
 ;; TODO: default value is 1
 (defn shuffle-the-cards-api [deck-count]
