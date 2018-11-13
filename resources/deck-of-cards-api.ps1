@@ -10,4 +10,8 @@ Invoke-RestMethod -Method Get https://deckofcardsapi.com/api/deck/new/shuffle/?d
 
 ##########
 
-$var =  Invoke-RestMethod -Method Get https://deckofcardsapi.com/api/deck/9n5ye8h2putj/draw/?count=2
+$result =  Invoke-RestMethod -Method Get https://deckofcardsapi.com/api/deck/9n5ye8h2putj/draw/?count=2
+
+$result.deck_id
+
+
